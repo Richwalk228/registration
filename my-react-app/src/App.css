@@ -1,0 +1,79 @@
+
+
+h1 {
+  justify-content: center;
+  align-items: center;   
+  margin: 0px 53rem;
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  width: 1000px;
+  height: 1000px;
+  color: azure;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 30rem;
+
+  padding: 0;
+}
+
+.btn {
+  justify-content: center;
+  align-items: center;
+  margin: 0px 30rem;
+
+}
+
+.form .name {
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0px 405px;
+  width: 100px;
+  height: 100px;
+}
+
+.form input {
+  background-color: #ffffff;
+  width: 100px;
+  height: 50px;
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  margin: 0px 2rem;
+  display: block;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.form .address {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  margin: 0px 400px;
+}
+
+.lo{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  margin: 0px 410px;
+  width: 100px;
+  height: 100px;
+}
+
+.contactInfo{  
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  padding: 10px;
+margin: 0px 400px;
+}
