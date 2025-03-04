@@ -4,54 +4,66 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  function RegistrationForm() {
-    const [stateList, setStateList] = useState([]);
-    const [formData, setFormData] = useState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      zipcode: '',
-      selectedState: ''
+  const [person, setPerson] = useState({
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    cellNumber: '',
+    email: '',
+  })
+  
+  function checkError() {
 
-    });
+    if (!person.firstName || !person.lastName || !person.address || !person.city ||
+      !person.state || !person.zipCode || !person.cellNumber || !person.email) return false;
+    return true;
+  }
+  function handleChange(name, e) {
+    setPerson(prevState => ({
+      prevState,
+      [name]: e.target.value,
 
-   function Checkerror() {
-      if (firstName == "") {
-        return (console.log("Please enter Name "))
-      }
+    }));
 
-    }
-
-  };
-
-
-  const clearForm = () =>{
-    
   }
 
+  function handleSubmit() {
+    !checkError()
+    console.log('Missing vital information');
+    //set person to local storage//
+    const saveToLocalStorage = () => {
+      localStorage.setItem('firstName', JSON.stringify(person));
+      
 
-  const handleSubmit = (e) => { 
-    e.preventDefault(); 
-    alert("Account created!"); 
-    clearForm(); 
-  }; 
+    };
+   
+    }
+
+
+
+
+
+
+
   return (
     <>
       <h1>Registration</h1>
       <div className='form' >
         <div className='name'>
-          <input type="text" id='firstName' placeholder='First name' value={formData.firstName} />
-          <input type="text" id='middleName' placeholder='Middle name' value={formData.middleName} />
-          <input type="text" id='lastName' placeholder='Last name' value={formData.lastName} />
+          <input type="text" id='firstName' placeholder='First name' onChange={(e) => handleChange("firstName", e)} value={person.firstName} />
+          <input type="text" id='middleName' placeholder='Middle name' onChange={(e) => handleChange("middleName", e)} value={[person.middleName]} />
+          <input type="text" id='lastName' placeholder='Last name' value={person.lastName} onChange={(e) => handleChange("lastName", e)} />
         </div>
         <div className='address'>
-          <input type="text" name="address1" id="address1" placeholder='Address' />
+          <input type="text" name="address1" id="address1" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
           <input type="text" name="address2" id="address2" placeholder='Address2' />
         </div>
         <div className='lo'>
-          <input type="text" placeholder='Zipcode' />
-          <input type="text" placeholder='City' />
+          <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
+          <input id='city' type="text" placeholder='City' value={person.city} onChange={(e) => handleChange("city", e)} />
           <select className='state' >
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -107,15 +119,24 @@ function App() {
           </select>
         </div>
         <div className='contactInfo'>
-          <input type="text" placeholder='Email' />
-          <input type="text" placeholder='Cell number' />
+          <input id='email' type="text" placeholder='Email' value={person.email} onChange={(e) => handleChange("email", e)} />
+          <input id='cellNumber' type="text" placeholder='Cell number' value={person.cellNumber} onChange={(e) => handleChange("cellNumber", e)} />
         </div>
         <div className='btn'>
-          <button>Submit</button>
+          <button className="button-85" role="button" onClick={handleSubmit} > Submit</button>
         </div>
       </div>
+      <div>
+
+        <div className='userInfo'>
+          <h2>User Information</h2>
+      
+        </div>
+      </div>
+
     </>
   )
+
 }
 
 export default App
