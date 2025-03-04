@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [person, setPerson] = useState({
+  const emptyPerson = {
     firstName: '',
     middleName: '',
     lastName: '',
@@ -13,7 +13,9 @@ function App() {
     zipCode: '',
     cellNumber: '',
     email: '',
-  })
+ }
+const [person, setPerson] = useState(emptyPerson)
+  
   
   function checkError() {
 
@@ -23,23 +25,31 @@ function App() {
   }
   function handleChange(name, e) {
     setPerson(prevState => ({
-      prevState,
+      ...prevState,
       [name]: e.target.value,
 
     }));
 
   }
-
+//clear field after submit btn is hit 
   function handleSubmit() {
     !checkError()
-    console.log('Missing vital information');
+   // if(localStorage.getItem('firstName'))
+     // localStorage.removeItem('firstName');
+    //}
+    // console.log('Missing vital information');
     //set person to local storage//
-    const saveToLocalStorage = () => {
-      localStorage.setItem('firstName', JSON.stringify(person));
-      
+    console.log("firing submit")
+    setPerson(emptyPerson);
+    saveToLocalStorage();
 
     };
-   
+const saveToLocalStorage = () => {
+  console.log("firing save to local storage")
+      localStorage.setItem({person,firstName}, JSON.stringify(person));
+      alert('Data saved to local storage')
+console.log(localStorage.getItem(person))
+
     }
 
 
@@ -58,8 +68,8 @@ function App() {
           <input type="text" id='lastName' placeholder='Last name' value={person.lastName} onChange={(e) => handleChange("lastName", e)} />
         </div>
         <div className='address'>
-          <input type="text" name="address1" id="address1" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
-          <input type="text" name="address2" id="address2" placeholder='Address2' />
+          <input type="text" name="address1" id="address" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
+          <input type="text" name="address2" id="addressX" placeholder='Address2' />
         </div>
         <div className='lo'>
           <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
