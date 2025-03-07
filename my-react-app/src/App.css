@@ -1,4 +1,4 @@
-html{
+html {
   background-color: #2d53fff3;
 }
 h1 {
@@ -7,7 +7,7 @@ h1 {
   font-size: 40pt;
   color: #fbfbfb;
 }
-.form{
+.form {
   border-radius: 5px;
   background-color: #ffffff;
   justify-content: center;
@@ -18,7 +18,6 @@ h1 {
 }
 
 .name input {
-
   border: 3px solid #000;
   border-radius: 5px;
   height: 50px;
@@ -31,8 +30,6 @@ h1 {
   font-size: 16px;
   padding: 0 6px;
   padding-left: 12px;
-
-
 }
 
 .name input:focus {
@@ -54,16 +51,15 @@ h1 {
 }
 
 .address input {
-
   padding: 7px;
   border-radius: 6px;
   font-size: 16px;
   background: #fbfbfb;
   border: 2px solid transparent;
   height: 36px;
-  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%),
+    0 1px 1.5px 0 rgb(0 0 0 / 5%);
 }
-
 
 .lo {
   justify-content: center;
@@ -73,14 +69,14 @@ h1 {
 }
 
 .lo input {
-
   padding: 7px;
   border-radius: 6px;
   font-size: 16px;
   background: #fbfbfb;
   border: 2px solid transparent;
   height: 36px;
-  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%),
+    0 1px 1.5px 0 rgb(0 0 0 / 5%);
 }
 
 .contactInfo {
@@ -88,18 +84,17 @@ h1 {
   align-items: center;
   display: flex;
   padding-top: 150px;
-
-} 
+}
 .contactInfo input {
-
   padding: 7px;
   border-radius: 6px;
   font-size: 16px;
   background: #fbfbfb;
   border: 2px solid transparent;
   height: 36px;
-  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
- }
+  box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%),
+    0 1px 1.5px 0 rgb(0 0 0 / 5%);
+}
 
 .button-85 {
   padding: 0.6em 2em;
@@ -122,22 +117,22 @@ h1 {
   display: flex;
   padding-top: 40px;
   height: 5vh;
-
-
 }
 
 .button-85:before {
   content: "";
-  background: linear-gradient(45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   position: absolute;
   top: -2px;
   left: -2px;
@@ -177,27 +172,74 @@ h1 {
   top: 0;
   border-radius: 10px;
 }
-.userInfo{
-display: flex;
-justify-content: center;
-align-items: flex-start;
-top: 0%;
-color: #fbfbfb;
-
-
+.userInfo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  top: 0%;
+  color: #fbfbfb;
 }
-.error-msg{
-  position:absolute;
-  top:200px;
+.error-msg {
+  position: absolute;
+  top: 200px;
   left: 620px;
-  color:rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
   z-index: 9;
 }
-.error-last{
-  position:absolute;
-  top:200px;
-  left: 850px;
-  color:rgb(255, 0, 0);
+.error-last {
+  position: absolute;
+  top: 200px;
+  left: 1065px;
+  color: rgb(255, 0, 0);
   z-index: 10;
-
 }
+.error-address {
+  position: absolute;
+  top: 400px;
+  left: 750px;
+  color: rgb(255, 0, 0);
+  z-index: 10;
+}
+.error-zipcode {
+  position: absolute;
+  top: 600px;
+  left: 665px;
+  color: rgb(255, 0, 0);
+  z-index: 10;
+}
+.error-city{
+  position: absolute;
+  top: 600px;
+  left: 880px;
+  color: rgb(255, 0, 0);
+  z-index: 10;
+}
+.error-state{
+  color: rgb(255, 0, 0);
+}
+
+.error-email{
+  position: absolute;
+  top: 810px;
+  left: 740px;
+  color: rgb(255, 0, 0);
+  z-index: 10;
+}
+.error-cellNumber{
+  position: absolute;
+  top: 810px;
+  left: 956px;
+  color: rgb(255, 0, 0);
+  z-index: 10;
+}
+.modal-container {
+  position: absolute;
+  background-color: #000;
+  color: rgb(255, 0, 0);
+  width: max-content;
+  top: 400px;
+  left: 850px;
+  justify-content: center;
+  text-align: center;
+}
+\

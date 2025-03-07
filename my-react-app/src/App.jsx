@@ -1,135 +1,177 @@
-import { use, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { use, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { Modal } from "./modal";
 
 function App() {
   const emptyPerson = {
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    cellNumber: '',
-    email: '',
-  }
+    firstName: undefined,
+    middleName: undefined,
+    lastName: undefined,
+    address: undefined,
+    city: undefined,
+    zipCode: undefined,
+    cellNumber: undefined,
+    email: undefined,
+    state: undefined,
+  };
   const [person, setPerson] = useState(emptyPerson);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState(
+    { firstname: "Missing firstname" },
+    { lastName: "missing lastnmae" },
+    { address: "missing address" },
+    { city: "missing city" },
+    { zipCode: "missing zipcode" },
+    { cellNumber: "missing number" },
+    { state: "missing state" },
+    { email: "missing email" }
+  );
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
-
   function checkError() {
-    console.log("checkError called")
+    console.log("checkError called");
     let errorList = {};
     if (!person.firstName) {
       // setErrors({ ...errors, firstName: 'Missing first name' })
-      errorList = { ...errorList, firstName: 'Missing first name' };
+      errorList = { ...errorList, firstName: "★" };
     }
     if (!person.lastName) {
       // setErrors({ ...errors, lastName: 'Missing last name' })
-      errorList = { ...errorList, lastName: 'Missing last name' }
+      errorList = { ...errorList, lastName: " ★ " };
     }
     if (!person.address) {
       // setErrors({ ...errors, address: 'Missing address' })
-      errorList = { ...errorList, address: 'Missing addres' }
+      errorList = { ...errorList, address: "★" };
     }
     if (!person.city) {
       // setErrors({ ...errors, city: 'Missing city' })
-      errorList = { ...errorList, city: 'Missing citys' }
+      errorList = { ...errorList, city: "★" };
     }
     if (!person.state) {
       // setErrors({ ...errors, state: 'Missing state' })
-     errorList = { ...errorList, state: 'Missing State' }
+      errorList = { ...errorList, state: "★" };
     }
     if (!person.zipCode) {
       // setErrors({ ...errors, zipCode: 'Missing zipcode' })
-      errorList = { ...errorList, zipCode: 'Missing zipcode' }
+      errorList = { ...errorList, zipCode: "★" };
     }
     if (!person.cellNumber) {
       // setErrors({ ...errors, cellNumber: 'Missing Phone number' })
-      errorList = { ...errorList, cellNumber: 'Missing number' }
+      errorList = { ...errorList, cellNumber: "★" };
     }
     if (!person.email) {
       // setErrors({ ...errors, email: 'Missing email ' })
-      errorList = { ...errorList, email: 'Missing Email' }
+      errorList = { ...errorList, email: "★" };
     }
-    setErrors({ ...errorList })
+    setErrors({ ...errorList });
   }
-
-  function getMissingKey() {
-    for (const key of Object.keys(person)) {
-      if (!person[key]) {
-        return (console.log(`Missing ${key}`))
-      }
-    } //if (Object.keys(person)=null)
-  }
-
 
   function handleChange(name, e) {
-console.log(e,'string')
-    setPerson(prevState => ({
+    setPerson((prevState) => ({
       ...prevState,
       [name]: e.target.value,
-
     }));
     checkError();
   }
-  //clear field after submit btn is hit 
   function handleSubmit() {
-    console.log(person)
-    console.log(errors)
+    console.log("errors in handlesubmit", errors);
     if (Object.keys(errors).length) {
       setShowErrorMessage(true);
+      console.log("iserror");
       return;
     }
-    //getMissingKey()
-    // if(localStorage.getItem('firstName'))
-    // localStorage.removeItem('firstName');
-    //
-    // console.log('Missing vital information');
-    //set person to local storage//
     setShowErrorMessage(false);
-    console.log("firing submit")
     setPerson(emptyPerson);
     saveToLocalStorage();
-
-  };
-  const saveToLocalStorage = () => {
-    console.log("firing save to local storage")
-    localStorage.setItem({ person, firstName }, JSON.stringify(person));
-    alert('Data saved to local storage')
-    console.log(localStorage.getItem(person))
-
+  }
+  function closemodal (){
+    setShowErrorMessage(false);
   }
 
-
-
-
-
-
+  const saveToLocalStorage = () => {
+    localStorage.setItem({ person, firstName }, JSON.stringify(person));
+    alert("Data saved to local storage");
+  };
 
   return (
     <>
       <h1>Registration</h1>
-      <div className='form' >
-        <div className='name'>
-          <input type="text" id='firstName' placeholder='First name' onChange={(e) => handleChange("firstName", e)} value={person.firstName} />
-          {errors.firstName ? <span className='error-msg' >{errors.firstName}</span> : null}
-          {console.log("errors is ", errors)}
-          <input type="text" id='middleName' placeholder='Middle name' onChange={(e) => handleChange("middleName", e)} value={[person.middleName]} />
-          <input type="text" id='lastName' placeholder='Last name' value={person.lastName} onChange={(e) => handleChange("lastName", e)} />
-          {errors.lastName ? <span className='error-last'>{errors.lastName}</span> : null}
+      <div className="form">
+        <div className="name">
+          <input
+            type="text"
+            id="firstName"
+            placeholder="First name"
+            onChange={(e) => handleChange("firstName", e)}
+            value={person.firstName}
+          />
+          {errors.firstName ? (
+            <span className="error-msg">{errors.firstName}</span>
+          ) : null}
+          <input
+            type="text"
+            id="middleName"
+            placeholder="Middle name"
+            onChange={(e) => handleChange("middleName", e)}
+            value={[person.middleName]}
+          />
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Last name"
+            value={person.lastName}
+            onChange={(e) => handleChange("lastName", e)}
+          />
+          {errors.lastName ? (
+            <span className="error-last">{errors.lastName}</span>
+          ) : null}
         </div>
-        <div className='address'>
-          <input type="text" name="address1" id="address" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
-
-          <input type="text" name="address2" id="addressX" placeholder='Address2' />
+        <div className="address">
+          <input
+            type="text"
+            name="address1"
+            id="address"
+            placeholder="Address"
+            value={person.address}
+            onChange={(e) => handleChange("address", e)}
+          />
+          {errors.address ? (
+            <span className="error-address">{errors.address}</span>
+          ) : null}
+          <input
+            type="text"
+            name="address2"
+            id="addressX"
+            placeholder="Address2"
+          />
         </div>
-        <div className='lo'>
-          <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
-          <input id='city' type="text" placeholder='City' value={person.city} onChange={(e) => handleChange("city", e)} />
-          <select className='state'   value={person.state} onChange={(e) => handleChange("state", e)}>
+        <div className="lo">
+          <input
+            id="zipCode"
+            type="text"
+            placeholder="Zipcode"
+            value={person.zipCode}
+            onChange={(e) => handleChange("zipCode", e)}
+          />
+          {errors.zipCode ? (
+            <span className="error-zipcode">{errors.zipCode}</span>
+          ) : null}
+          <input
+            id="city"
+            type="text"
+            placeholder="City"
+            value={person.city}
+            onChange={(e) => handleChange("city", e)}
+          />
+          {errors.city ? (
+            <span className="error-city">{errors.city}</span>
+          ) : null}
+          <select
+            className="state"
+            value={person.state}
+            onChange={(e) => handleChange("state", e)}
+          >
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -182,27 +224,47 @@ console.log(e,'string')
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
-          {errors.state ? <span>{errors.state}</span> : null}
+          {errors.state ? (
+            <span className="error-state">{errors.state}</span>
+          ) : null}
         </div>
-        <div className='contactInfo'>
-          <input id='email' type="text" placeholder='Email' value={person.email} onChange={(e) => handleChange("email", e)} />
-          <input id='cellNumber' type="text" placeholder='Cell number' value={person.cellNumber} onChange={(e) => handleChange("cellNumber", e)} />
+        <div className="contactInfo">
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={person.email}
+            onChange={(e) => handleChange("email", e)}
+          />
+          {errors.email ? (
+            <span className="error-email">{errors.email}</span>
+          ) : null}
+          <input
+            id="cellNumber"
+            type="text"
+            placeholder="Cell number"
+            value={person.cellNumber}
+            onChange={(e) => handleChange("cellNumber", e)}
+          />
+          {errors.cellNumber ? (
+            <span className="error-cellNumber">{errors.cellNumber}</span>
+          ) : null}
         </div>
-        <div className='btn'>
-          <button className="button-85" role="button" onClick={handleSubmit} > Submit</button>
+        <div className="btn">
+          <button className="button-85" role="button" onClick={handleSubmit}>
+            {" "}
+            Submit
+          </button>
         </div>
       </div>
       <div>
-
-        <div className='userInfo'>
+        <div className="userInfo">
           <h2>User Information</h2>
-           
         </div>
       </div>
- {showErrorMessage ? <h1>cannot submit information</h1> : null}
+      <Modal close={closemodal} open={showErrorMessage} title="⚠️Error" msg= '!Please enter text into all reqired feilds!' />       
     </>
-  )
-
+  );
 }
 
-export default App
+export default App;
