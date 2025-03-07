@@ -186,3 +186,18 @@ color: #fbfbfb;
 
 
 }
+.error-msg{
+  position:absolute;
+  top:200px;
+  left: 620px;
+  color:rgb(255, 0, 0);
+  z-index: 9;
+}
+.error-last{
+  position:absolute;
+  top:200px;
+  left: 850px;
+  color:rgb(255, 0, 0);
+  z-index: 10;
+
+}

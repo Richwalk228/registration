@@ -13,44 +13,101 @@ function App() {
     zipCode: '',
     cellNumber: '',
     email: '',
- }
-const [person, setPerson] = useState(emptyPerson)
-  
-  
-  function checkError() {
-
-    if (!person.firstName || !person.lastName || !person.address || !person.city ||
-      !person.state || !person.zipCode || !person.cellNumber || !person.email) return false;
-    return true;
   }
+  const [person, setPerson] = useState(emptyPerson);
+  const [errors, setErrors] = useState({});
+
+
+  function checkError() {
+    console.log("checkError called")
+    let errorList = {};
+    if (!person.firstName) {
+      // setErrors({ ...errors, firstName: 'Missing first name' })
+      errorList = {...errorList, firstName: 'Missing first name'};
+    }
+    if (!person.lastName) {
+      // setErrors({ ...errors, lastName: 'Missing last name' })
+    errorList={...errorList,lastName: 'Missing last name'}
+    }
+    if (!person.address) {
+      // setErrors({ ...errors, address: 'Missing address' })
+      errorList={...errorList,address: 'Missing addres'}
+    }
+    if (!person.city) {
+      // setErrors({ ...errors, city: 'Missing city' })
+      errorList={...errorList,city: 'Missing citys'}
+    }
+    if (!person.state) {
+      // setErrors({ ...errors, state: 'Missing state' })
+    } errorList={...errorList,state: 'Missing State'}
+    if (!person.zipCode) {
+      // setErrors({ ...errors, zipCode: 'Missing zipcode' })
+      errorList={...errorList,zipCode:'Missing zipcode'}
+    }
+    if (!person.cellNumber) {
+      // setErrors({ ...errors, cellNumber: 'Missing Phone number' })
+       errorList={...errorList,cellNumber: 'Missing number'}
+    }
+    if (!person.email) {
+      // setErrors({ ...errors, email: 'Missing email ' })
+      errorList={...errorList,email: 'Missing Email'}
+    }
+    setErrors({...errorList})
+  }
+
+  function getMissingKey() {
+    for (const key of Object.keys(person)) {
+      if (!person[key]) {
+        return (console.log(`Missing ${key}`))
+      }
+
+
+    }
+
+
+
+    //if (Object.keys(person)=null) 
+
+
+    return
+
+  }
+
+
   function handleChange(name, e) {
     setPerson(prevState => ({
       ...prevState,
       [name]: e.target.value,
 
     }));
-
+    checkError();
   }
-//clear field after submit btn is hit 
+  //clear field after submit btn is hit 
   function handleSubmit() {
-    !checkError()
-   // if(localStorage.getItem('firstName'))
-     // localStorage.removeItem('firstName');
-    //}
+    console.log(person)
+    console.log(errors)
+    if (Object.keys(errors).length) {
+      return;
+
+    }
+    //getMissingKey()
+    // if(localStorage.getItem('firstName'))
+    // localStorage.removeItem('firstName');
+    //
     // console.log('Missing vital information');
     //set person to local storage//
     console.log("firing submit")
     setPerson(emptyPerson);
     saveToLocalStorage();
 
-    };
-const saveToLocalStorage = () => {
-  console.log("firing save to local storage")
-      localStorage.setItem({person,firstName}, JSON.stringify(person));
-      alert('Data saved to local storage')
-console.log(localStorage.getItem(person))
+  };
+  const saveToLocalStorage = () => {
+    console.log("firing save to local storage")
+    localStorage.setItem({ person, firstName }, JSON.stringify(person));
+    alert('Data saved to local storage')
+    console.log(localStorage.getItem(person))
 
-    }
+  }
 
 
 
@@ -64,8 +121,11 @@ console.log(localStorage.getItem(person))
       <div className='form' >
         <div className='name'>
           <input type="text" id='firstName' placeholder='First name' onChange={(e) => handleChange("firstName", e)} value={person.firstName} />
+          {errors.firstName ? <span className='error-msg' >{errors.firstName}</span> : null}
+          {console.log("errors is ", errors)}
           <input type="text" id='middleName' placeholder='Middle name' onChange={(e) => handleChange("middleName", e)} value={[person.middleName]} />
           <input type="text" id='lastName' placeholder='Last name' value={person.lastName} onChange={(e) => handleChange("lastName", e)} />
+          {errors.lastName ? <span className='error-last'>{errors.lastName}</span> : null}
         </div>
         <div className='address'>
           <input type="text" name="address1" id="address" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
@@ -74,7 +134,7 @@ console.log(localStorage.getItem(person))
         <div className='lo'>
           <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
           <input id='city' type="text" placeholder='City' value={person.city} onChange={(e) => handleChange("city", e)} />
-          <select className='state' >
+          <select className='state' onChange={(e) => handleChange("state",e)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -140,7 +200,7 @@ console.log(localStorage.getItem(person))
 
         <div className='userInfo'>
           <h2>User Information</h2>
-      
+
         </div>
       </div>
 
