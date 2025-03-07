@@ -23,36 +23,36 @@ function App() {
     let errorList = {};
     if (!person.firstName) {
       // setErrors({ ...errors, firstName: 'Missing first name' })
-      errorList = {...errorList, firstName: 'Missing first name'};
+      errorList = { ...errorList, firstName: 'Missing first name' };
     }
     if (!person.lastName) {
       // setErrors({ ...errors, lastName: 'Missing last name' })
-    errorList={...errorList,lastName: 'Missing last name'}
+      errorList = { ...errorList, lastName: 'Missing last name' }
     }
     if (!person.address) {
       // setErrors({ ...errors, address: 'Missing address' })
-      errorList={...errorList,address: 'Missing addres'}
+      errorList = { ...errorList, address: 'Missing addres' }
     }
     if (!person.city) {
       // setErrors({ ...errors, city: 'Missing city' })
-      errorList={...errorList,city: 'Missing citys'}
+      errorList = { ...errorList, city: 'Missing citys' }
     }
     if (!person.state) {
       // setErrors({ ...errors, state: 'Missing state' })
-    } errorList={...errorList,state: 'Missing State'}
+    } errorList = { ...errorList, state: 'Missing State' }
     if (!person.zipCode) {
       // setErrors({ ...errors, zipCode: 'Missing zipcode' })
-      errorList={...errorList,zipCode:'Missing zipcode'}
+      errorList = { ...errorList, zipCode: 'Missing zipcode' }
     }
     if (!person.cellNumber) {
       // setErrors({ ...errors, cellNumber: 'Missing Phone number' })
-       errorList={...errorList,cellNumber: 'Missing number'}
+      errorList = { ...errorList, cellNumber: 'Missing number' }
     }
     if (!person.email) {
       // setErrors({ ...errors, email: 'Missing email ' })
-      errorList={...errorList,email: 'Missing Email'}
+      errorList = { ...errorList, email: 'Missing Email' }
     }
-    setErrors({...errorList})
+    setErrors({ ...errorList })
   }
 
   function getMissingKey() {
@@ -60,21 +60,12 @@ function App() {
       if (!person[key]) {
         return (console.log(`Missing ${key}`))
       }
-
-
-    }
-
-
-
-    //if (Object.keys(person)=null) 
-
-
-    return
-
+    } //if (Object.keys(person)=null)
   }
 
 
   function handleChange(name, e) {
+console.log(e.person)
     setPerson(prevState => ({
       ...prevState,
       [name]: e.target.value,
@@ -129,12 +120,13 @@ function App() {
         </div>
         <div className='address'>
           <input type="text" name="address1" id="address" placeholder='Address' value={person.address} onChange={(e) => handleChange("address", e)} />
+
           <input type="text" name="address2" id="addressX" placeholder='Address2' />
         </div>
         <div className='lo'>
           <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
           <input id='city' type="text" placeholder='City' value={person.city} onChange={(e) => handleChange("city", e)} />
-          <select className='state' onChange={(e) => handleChange("state",e)}>
+          <select className='state' onChange={(e) => handleChange("state", e)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -187,6 +179,7 @@ function App() {
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
+          {errors.state ? <span>{errors.state}</span> : null}
         </div>
         <div className='contactInfo'>
           <input id='email' type="text" placeholder='Email' value={person.email} onChange={(e) => handleChange("email", e)} />
@@ -200,7 +193,7 @@ function App() {
 
         <div className='userInfo'>
           <h2>User Information</h2>
-
+           
         </div>
       </div>
 
