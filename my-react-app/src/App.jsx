@@ -16,6 +16,7 @@ function App() {
   }
   const [person, setPerson] = useState(emptyPerson);
   const [errors, setErrors] = useState({});
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 
   function checkError() {
@@ -39,7 +40,8 @@ function App() {
     }
     if (!person.state) {
       // setErrors({ ...errors, state: 'Missing state' })
-    } errorList = { ...errorList, state: 'Missing State' }
+     errorList = { ...errorList, state: 'Missing State' }
+    }
     if (!person.zipCode) {
       // setErrors({ ...errors, zipCode: 'Missing zipcode' })
       errorList = { ...errorList, zipCode: 'Missing zipcode' }
@@ -65,7 +67,7 @@ function App() {
 
 
   function handleChange(name, e) {
-console.log(e.person)
+console.log(e,'string')
     setPerson(prevState => ({
       ...prevState,
       [name]: e.target.value,
@@ -78,8 +80,8 @@ console.log(e.person)
     console.log(person)
     console.log(errors)
     if (Object.keys(errors).length) {
+      setShowErrorMessage(true);
       return;
-
     }
     //getMissingKey()
     // if(localStorage.getItem('firstName'))
@@ -87,6 +89,7 @@ console.log(e.person)
     //
     // console.log('Missing vital information');
     //set person to local storage//
+    setShowErrorMessage(false);
     console.log("firing submit")
     setPerson(emptyPerson);
     saveToLocalStorage();
@@ -126,7 +129,7 @@ console.log(e.person)
         <div className='lo'>
           <input id='zipCode' type="text" placeholder='Zipcode' value={person.zipCode} onChange={(e) => handleChange("zipCode", e)} />
           <input id='city' type="text" placeholder='City' value={person.city} onChange={(e) => handleChange("city", e)} />
-          <select className='state' onChange={(e) => handleChange("state", e)}>
+          <select className='state'   value={person.state} onChange={(e) => handleChange("state", e)}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -196,7 +199,7 @@ console.log(e.person)
            
         </div>
       </div>
-
+ {showErrorMessage ? <h1>cannot submit information</h1> : null}
     </>
   )
 
