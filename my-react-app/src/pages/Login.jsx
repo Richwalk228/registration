@@ -2,31 +2,34 @@ import Registration from "./Registration";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const navigate = useNavigate();
-    const storedperson = localStorage.getItem('person');
-    const user = storedperson ? JSON.parse(person.username) : null;
-    return (
-      <>
-      
+  const navigate = useNavigate();
+  const storedPerson = localStorage.getItem("person");
+  const user = storedPerson ? JSON.parse(storedPerson) : null;
 
-  <div className="login-containier">
-    
-    
-    <span>Username</span>
+  function tictic() {
+    console.log(storedPerson);
+  }
 
-<input className="logUsername" type="text" placeholder="Username"/>
-<br/>
-<span>Password</span>
-<input className="logPassword" type="text" placeholder="Password"/>
-<button className="logbtn" >Login</button>
-<br />
-<div className="logText"><button onClick={() => navigate("/registration")}>Create an account</button> </div>
+  return (
+    <>
+      <div className="login-containier">
+        <span>Username</span>
 
-
-  </div>
-
-  </>
-    );
+        <input className="logUsername" type="text" placeholder="Username" />
+        <br />
+        <span>Password</span>
+        <input className="logPassword" type="text" placeholder="Password" />
+        <button className="logbtn" onClick={tictic}>Login</button>
+        <br />
+        <div className="logText">
+          <button
+            onClick={() => navigate("/registration")}
+          >
+            Create an account
+          </button>{" "}
+        </div>
+      </div>
+    </>
+  );
 }
-  export default Login;
-  
+export default Login;

@@ -69,7 +69,7 @@ function Registration() {
       setErrors({ ...errors, username: "missing username" });
       errorList = { ...errorList, username: "★" };
     }
-    if (!person.password) {
+    if (person.password) {
       setErrors({ ...errors, password: "missing password" });
       errorList = { ...errorList, password: "★" };
     }
