@@ -5,21 +5,24 @@ function Login() {
   const navigate = useNavigate();
   const storedPerson = localStorage.getItem("person");
   const user = storedPerson ? JSON.parse(storedPerson) : null;
+function test(){
+  if(!nameIdentifyer == user.username )
+  return
+}
 
-  function tictic() {
-    console.log(storedPerson);
-  }
+function passwordCheck(){
 
+
+}
   return (
     <>
       <div className="login-containier">
         <span>Username</span>
-
-        <input className="logUsername" type="text" placeholder="Username" />
+        <input  className="logUsername" type="text" placeholder="Username" />
         <br />
         <span>Password</span>
         <input className="logPassword" type="text" placeholder="Password" />
-        <button className="logbtn" onClick={tictic}>Login</button>
+        <button className="logbtn" onClick={test}>Login</button>
         <br />
         <div className="logText">
           <button
