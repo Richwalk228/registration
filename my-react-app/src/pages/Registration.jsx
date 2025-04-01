@@ -104,35 +104,6 @@ function Registration() {
     alert("Data saved to local storage");
   };
 
-  //   const [password, setPassword] = useState('');
-  //   const [passErrors, setPassErrors] = useState({});
-  //   const handlePasswordChange = (e) => {
-  //     const newPassword = e.target.value;
-  //     setPassword(newPassword);
-  // const passErrors = {};
-  // if (newPassword.length < 8) {
-  //     passErrors.length = 'Password must be at least 8 characters long';
-  //   }
-  //   if (!/[A-Z]/.test(newPassword)) {
-  //     passErrors.uppercase = 'Password must contain at least one uppercase letter';
-  //   }
-  //   if (!/[a-z]/.test(newPassword)) {
-  //     passErrors.lowercase = 'Password must contain at least one lowercase letter';
-  //   }
-  //   if (!/[0-9]/.test(newPassword)) {
-  //     passErrors.number = 'Password must contain at least one number';
-  //   }
-  //   if (!/[!@#$%^&*]/.test(newPassword)) {
-  //     passErrors.specialChar = 'Password must contain at least one special character';
-  //   }
-  //    if (/\s/.test(newPassword)) {
-  //     passErrors.noSpaces = 'Password must not contain spaces';
-  //   }
-
-  //   setPassErrors(passErrors);
-  // };
-  // const isPasswordValid = Object.keys(passErrors).length === 0 && password.length > 0;
-
   return (
     <>
       <h1>Registration</h1>

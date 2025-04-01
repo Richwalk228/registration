@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function Market() {
@@ -53,7 +54,7 @@ function Market() {
         <nav role="main">
           <a href="link.com">link</a>
         </nav>
-        <h1>Market Place</h1>
+        <h1 className='mh1'>Market Place</h1>
         <div className='dropDown  justify-content-center'>
           <select onChange={(event) => {
             console.log(event)

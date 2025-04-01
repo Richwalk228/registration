@@ -1,5 +1,5 @@
- html {
-  background-color: #0026fff3;
+{
+  
 }
 h1 {
   justify-content: center;
@@ -124,6 +124,7 @@ h1 {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 0 275px;
 }
 
 .btn {
@@ -276,7 +277,7 @@ h1 {
   margin-top: 300px;
   margin-left: 35vw;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(79, 105, 255, 0.4);
   border-top-color: rgb(33, 38, 45);
   border-top-width: 1px;
   border-radius: 25px;
@@ -396,14 +397,7 @@ h1 {
   color: #0011ff;
 }
 
-.Market {
-  background: linear-gradient(#e66465, #001bb3);
-  height: 100vh;
-  width: auto;
-  justify-content: space-between;
-}
-
-h1 {
+.mh1 {
   margin: 0px 100px;
   text-align: center;
   justify-content: center;

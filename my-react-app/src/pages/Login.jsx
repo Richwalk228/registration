@@ -7,6 +7,7 @@ function Login() {
   const user = storedPerson ? JSON.parse(storedPerson) : null;
 function test(){
   if(!nameIdentifyer == user.username )
+
   return
 }
 
@@ -22,7 +23,7 @@ function passwordCheck(){
         <br />
         <span>Password</span>
         <input className="logPassword" type="text" placeholder="Password" />
-        <button className="logbtn" onClick={test}>Login</button>
+        <button className="logbtn" onClick={() =>navigate("/market")}>Login</button>
         <br />
         <div className="logText">
           <button
