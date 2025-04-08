@@ -432,6 +432,35 @@ h1 {
   color: #0011ff;
 }
 
+
+.navbar {
+  background-color: #f0f0f0;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+
 .App{
   background-color: #ffffff;
   color: #020202;
@@ -500,7 +529,7 @@ h1 {
 
 .cart {
   position:absolute ;
-  top: 0 ; 
+  top: 500px; 
   right: 0 ;
 
 }
@@ -538,6 +567,9 @@ left: 600px;
 }
 
 .ld-btn{
-height: 100px;
-width: 100px;
+position: relative;
+height: 50px;
+width: 50px;
+border-radius: 10px;
+top: 0px;
 }
