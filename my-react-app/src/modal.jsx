@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import './Modal.css'; // Optional: for styling
 
 export const Modal = (props) => {
   const { open, title, msg , close } = props;

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal } from "../modal";
+import useTheme from "../hooks/useTheme";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 function Registration() {
   const emptyPerson = {
@@ -30,8 +32,12 @@ function Registration() {
   );
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+  const isLightTheme = useTheme((x) => x.isLightTheme);
+  const setIsLightTheme = useTheme((x) => x.setIsLightTheme);
+  const toggleTheme = () => setIsLightTheme(!isLightTheme);
+
   function checkError() {
-    console.log("checkError called");
+    console.error("checkError called");
     let errorList = {};
     if (!person.firstName) {
       setErrors({ ...errors, firstName: "Missing first name" });
@@ -69,7 +75,7 @@ function Registration() {
       setErrors({ ...errors, username: "missing username" });
       errorList = { ...errorList, username: "★" };
     }
-    if (person.password) {
+    if (!person.password) {
       setErrors({ ...errors, password: "missing password" });
       errorList = { ...errorList, password: "★" };
     }
@@ -84,6 +90,7 @@ function Registration() {
     checkError();
   }
   function handleSubmit() {
+    console.log(person);
     console.log("errors in handlesubmit", errors);
     if (Object.keys(errors).length) {
       setShowErrorMessage(true);
@@ -91,23 +98,27 @@ function Registration() {
       return;
     }
     setShowErrorMessage(false);
-    setPerson(emptyPerson);
-
     saveToLocalStorage();
+    setPerson(emptyPerson);
   }
   function closemodal() {
     setShowErrorMessage(false);
   }
 
   const saveToLocalStorage = () => {
-    localStorage.setItem("person", JSON.stringify(person));
+    const storedPeople = JSON.parse(localStorage.getItem("people")) ?? [];
+    storedPeople.push(person);
+    localStorage.setItem("people", JSON.stringify(storedPeople));
     alert("Data saved to local storage");
   };
 
   return (
     <>
+      <button className="ld-btn" onClick={toggleTheme}>
+        {isLightTheme ? <SunIcon /> : <MoonIcon />}
+      </button>
       <h1>Registration</h1>
-      <div className="form">
+      <div className={isLightTheme ? "form" : "form-dark"}>
         <div className="name">
           <input
             type="text"

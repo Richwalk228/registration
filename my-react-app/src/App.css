@@ -1,6 +1,4 @@
-{
-  
-}
+
 h1 {
   justify-content: center;
   text-align: center;
@@ -9,13 +7,28 @@ h1 {
 } 
 .form {
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #fdfdfd;
+  color: #000;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 100%;
   margin: 0 auto;
-  height: 80vh;
+  height: 100%;
 }
+
+.form-dark {
+  border-radius: 5px;
+  background-color: #000000;
+  color: #fffcfc;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
 
 .name input {
   border: 3px solid #000;
@@ -119,6 +132,7 @@ h1 {
   background: #111;
   cursor: pointer;
   position: relative;
+  top: 40px;
   z-index: 0;
   border-radius: 10px;
   user-select: none;
@@ -197,36 +211,36 @@ h1 {
 }
 .error-msg {
   position: absolute;
-  top: 118px;
-  left: 635px;
+  top: 125px;
+  left: 650px;
   color: rgb(255, 0, 0);
   z-index: 9;
 }
 .error-last {
   position: absolute;
-  top: 118px;
-  left: 1075px;
+  top: 125px;
+  left: 1065px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
 .error-address {
   position: absolute;
-  top: 275px;
-  left: 750px;
+  top: 265px;
+  left: 760px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
 .error-zipcode {
   position: absolute;
-  top: 430px;
+  top: 400px;
   left: 670px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
 .error-city {
   position: absolute;
-  top: 430px;
-  left: 890px;
+  top: 400px;
+  left: 875px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
@@ -236,28 +250,28 @@ h1 {
 
 .error-email {
   position: absolute;
-  top: 585px;
-  left: 750px;
+  top: 535px;
+  left: 760px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
 .error-cellNumber {
   position: absolute;
-  top: 585px;
+  top: 535px;
   left: 965px;
   color: rgb(255, 0, 0);
   z-index: 10;
 }
 .error-username {
     position: absolute;
-    top: 725px;
-    left: 755px;
+    top: 670px;
+    left: 770px;
     color: rgb(255, 0, 0);
     z-index: 10;
 }
 .error-password{
  position: absolute;
-  top: 725px;
+  top: 670px;
   left: 962px;
   color: rgb(255, 0, 0);
   z-index: 10;
@@ -292,6 +306,27 @@ h1 {
   top: 500px;
   width: 500px;
 }
+
+.login-container-dark {
+  margin-left: 35vw;
+  align-items: center;
+  background-color: rgba(79, 105, 255, 0.4);
+  border-top-color: rgb(33, 38, 45);
+  border-top-width: 1px;
+  border-radius: 25px;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  color-scheme: dark;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  height: 500px;
+  justify-content: center;
+  top: 500px;
+  width: 500px;
+}
+
 .logUsername {
   position: relative;
   cursor: text;
@@ -390,19 +425,29 @@ h1 {
 }
 .logText {
   position: relative;
-  color: #020202;
+  color: #ffffff;
 
 }
 .logText :hover {
   color: #0011ff;
 }
 
+.App{
+  background-color: #ffffff;
+  color: #020202;
+}
+.App-dark{
+  background-color: #000000;
+  color: #ffffff;
+  
+}
+
+
 .mh1 {
   margin: 0px 100px;
   text-align: center;
   justify-content: center;
   font-size: 30pt;
-
 }
 
 .dropDown {
@@ -454,16 +499,15 @@ h1 {
 }
 
 .cart {
- align-items:center ;
+  position:absolute ;
+  top: 0 ; 
+  right: 0 ;
 
 }
 
 .addContainer {
   justify-content: center;
   align-items: center;
-
-
-
 }
 
 .addBtn {
@@ -478,11 +522,22 @@ h1 {
 .removeBtn{
 cursor: pointer;
 font-size: x-small;
-
 }
 
 .advertisementScreen{
-height: 500px ;
+height: 500px;
 width: 500px;
+}
 
+.logh1{
+position: absolute;
+text-align: center;
+color: #000;
+top: 320px;
+left: 600px;
+}
+
+.ld-btn{
+height: 100px;
+width: 100px;
 }
