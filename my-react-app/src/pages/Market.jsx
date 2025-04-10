@@ -2,7 +2,7 @@ import { ShoppingCartIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import useTheme from "../hooks/useTheme";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Market() {
   const [name, setName] = useState("");
@@ -18,6 +18,10 @@ function Market() {
   const isLightTheme = useTheme((x) => x.isLightTheme);
   const setIsLightTheme = useTheme((x) => x.setIsLightTheme);
   const toggleTheme = () => setIsLightTheme(!isLightTheme);
+
+const storedPerson=localStorage.getItem('currentUser');
+const person = storedPerson ? JSON.parse(storedPerson): null;
+
 
   function productAdd(product) {
     if (product.name == "") {
@@ -53,28 +57,27 @@ function Market() {
   }
   return (
     <>
-
-<nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">My Website</Link>
-      </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Login</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/services">Services</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
-    </nav>
-
-
+      <nav className="navbar">
+        <div className="navbar-logo">
+          <Link to="/">
+            <img className="logo" src="./logo.jpg" alt="logo" />
+          </Link>
+        </div>
+        <ul className="navbar-links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/services">Services</Link>
+          </li>
+          <li>
+            <Link to="/">Login</Link>
+          </li>
+        </ul>
+      </nav>
 
       <button className="ld-btn" onClick={toggleTheme}>
         {isLightTheme ? <SunIcon /> : <MoonIcon />}
@@ -90,7 +93,7 @@ function Market() {
           <nav role="main">
             <a href="link.com">link</a>
           </nav>
-          <h1 className="mh1">Market Place</h1>
+          <h1 className="mh1">Welcome,{person.firstName}</h1>
           <div className="dropDown  justify-content-center">
             <select
               onChange={(event) => {
@@ -138,21 +141,10 @@ function Market() {
                 Add
               </button>
             </div>
-            <div className="advertisementScreen  bg-dark d-flex align-items-center justify-content-center text-light">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/Qop1sH70nHI?si=NmCV71jO-oJCoIBU"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div className="text-warning font-weight-lighter">
-              advertisement
-            </div>
+          </div>
+          <div className="product-displays">
+            <button className="addToCart">+</button>
+            <img className="product-Img" src="./shoes.jpg" alt="" />
           </div>
         </div>
         <div className=" cart">
@@ -178,9 +170,7 @@ function Market() {
                       <button
                         className="removeBtn"
                         onClick={() => removeBtn(p)}
-                      >
-                        X
-                      </button>
+                      ></button>
                     </td>
                     <td>{p.name}</td>
                     <td>{p.price}</td>

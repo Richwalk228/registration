@@ -7,24 +7,24 @@ h1 {
 } 
 .form {
   border-radius: 5px;
-  background-color: #fdfdfd;
-  color: #000;
+  background-color: #a7afff;
+  color: #f8f7f7;
   text-align: center;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 700px;
   margin: 0 auto;
   height: 100%;
 }
 
 .form-dark {
   border-radius: 5px;
-  background-color: #000000;
+  background-color: #ffffff;
   color: #fffcfc;
   text-align: center;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 700px;
   margin: 0 auto;
   height: 100%;
 }
@@ -572,4 +572,8 @@ height: 50px;
 width: 50px;
 border-radius: 10px;
 top: 0px;
+}
+.logo{
+height: 60px;
+
 }

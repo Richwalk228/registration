@@ -303,9 +303,7 @@ function Registration() {
         </div>
       </div>
       <div>
-        <div className="userInfo">
-          <h2>User Information</h2>
-        </div>
+
       </div>
       <Modal
         close={closemodal}
